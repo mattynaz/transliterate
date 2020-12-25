@@ -1,6 +1,6 @@
 package transliterate
 
-// Converter is
+// Converter is a struct
 type Converter struct {
 	trie *node
 }
