@@ -1,5 +1,6 @@
 package transliterate
 
+// Test
 type node struct {
 	children map[rune]*node
 	symbol   []rune
