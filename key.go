@@ -24,7 +24,6 @@ func LoadKey(path string) (key map[string]string, err error) {
 		return nil, fmt.Errorf("invalid key format, file must be CSV with two columns and one row for the column headers")
 	}
 	for _, line := range lines[1:] {
-		fmt.Println(line[0] + ", " + line[1])
 		key[line[0]] = line[1]
 	}
 
