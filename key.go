@@ -15,14 +15,16 @@ func LoadKey(path string) (key map[string]string, err error) {
 	defer csvfile.Close()
 
 	reader := csv.NewReader(csvfile)
+	reader.LazyQuotes = true
 	reader.FieldsPerRecord = 2
-	lines, err := reader.ReadAll()
 	
+	lines, err := reader.ReadAll()
 	if err != nil {
 		return nil, fmt.Errorf(err.Error())
 	}
 
-	for _, line := range lines {
+	key = map[string]string{}
+	for _, line := range lines[1:] {
 		key[line[0]] = line[1]
 	}
 
