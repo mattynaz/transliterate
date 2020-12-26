@@ -14,7 +14,9 @@ func LoadKey(path string) (key map[string]string, err error) {
 	}
 	defer csvfile.Close()
 
-	lines, err := csv.NewReader(csvfile).ReadAll()
+	reader := csv.NewReader(csvfile)
+	reader.LazyQuotes = true
+	lines, err := reader.ReadAll()
 	if err != nil {
 		return nil, fmt.Errorf(err.Error())
 	}
